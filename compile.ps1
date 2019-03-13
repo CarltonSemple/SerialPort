@@ -1,0 +1,1 @@
+g++ -std=c++11 -I .\include .\src\SerialPort.cpp .\main.cpp
