@@ -12,6 +12,9 @@
 #define ARDUINO_WAIT_TIME 2000
 #define MAX_DATA_LENGTH 255
 
+//  override byte to prevent clashes with <cstddef>
+#define byte win_byte_override
+
 #include <windows.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,7 +62,7 @@ SerialPort::SerialPort(char *portName)
             printf("failed to get current serial parameters");
         }
         else {
-            dcbSerialParameters.BaudRate = CBR_9600;
+            dcbSerialParameters.BaudRate = 115200;//CBR_9600;
             dcbSerialParameters.ByteSize = 8;
             dcbSerialParameters.StopBits = ONESTOPBIT;
             dcbSerialParameters.Parity = NOPARITY;
